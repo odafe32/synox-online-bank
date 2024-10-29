@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2023 at 05:55 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Oct 29, 2024 at 03:13 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -65,7 +66,7 @@ CREATE TABLE `ib_admin` (
 --
 
 INSERT INTO `ib_admin` (`admin_id`, `name`, `email`, `number`, `password`, `profile_pic`) VALUES
-(2, 'System Administrator', 'admin@mail.com', 'iBank-ADM-0516', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d', 'admin-icn.png');
+(2, 'Super Admin', 'admin@synox.com', 'iBank-ADM-0516', '036d0ef7567a20b5a4ad24a354ea4a945ddab676', 'admin-icn.png');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,7 @@ CREATE TABLE `ib_bankaccounts` (
   `client_number` varchar(200) NOT NULL,
   `client_email` varchar(200) NOT NULL,
   `client_adr` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -101,7 +102,9 @@ INSERT INTO `ib_bankaccounts` (`account_id`, `acc_name`, `account_number`, `acc_
 (15, 'Amanda Stiefel', '287359614', 'Savings ', '20', 'Active', '0', '8', 'Amanda Stiefel', '478000001', '7850000014', 'iBank-CLIENT-0423', 'amanda@mail.com', '92 Maple Street', '2023-02-16 16:14:54.629958'),
 (16, 'Johnnie Reyes', '705239816', ' Retirement ', '10', 'Active', '0', '6', 'Johnnie J. Reyes', '147455554', '7412545454', 'iBank-CLIENT-1698', 'reyes@mail.com', '23 Hinkle Deegan Lake Road', '2023-02-16 16:19:11.806028'),
 (17, 'Liam M. Moore', '719360482', 'Savings ', '20', 'Active', '0', '9', 'Liam Moore', '170014695', '7014569696', 'iBank-CLIENT-4716', 'liamoore@mail.com', '46 Timberbrook Lane', '2023-02-16 16:28:37.437656'),
-(18, 'Johnny M. Doen', '724310586', 'Fixed Deposit Account ', '40', 'Active', '0', '3', 'John Doe', '36756481', '9897890089', 'iBank-CLIENT-8127', 'johndoe@gmail.com', '127007 Localhost', '2023-02-16 16:40:15.645285');
+(18, 'Johnny M. Doen', '724310586', 'Fixed Deposit Account ', '40', 'Active', '0', '3', 'John Doe', '36756481', '9897890089', 'iBank-CLIENT-8127', 'johndoe@gmail.com', '127007 Localhost', '2023-02-16 16:40:15.645285'),
+(19, 'joseph', '748603512', 'Select Any iBank Account types', '', 'Active', '0', '10', 'joseph', '1238822', '09054444075', 'iBank-CLIENT-2816', 'godfreyj.sule1@gmail.com', 'keffi', '2024-10-28 20:50:51.014452'),
+(20, 'joseph', '067984351', 'Select Any iBank Account types', '', 'Active', '0', '11', 'joseph sule', '1238822', '09054444075', 'iBank-CLIENT-2897', 'godfreyj.sule1@gmail.com', 'keffi', '2024-10-28 23:33:35.027342');
 
 -- --------------------------------------------------------
 
@@ -127,11 +130,9 @@ CREATE TABLE `ib_clients` (
 
 INSERT INTO `ib_clients` (`client_id`, `name`, `national_id`, `phone`, `address`, `email`, `password`, `profile_pic`, `client_number`) VALUES
 (3, 'John Doe', '36756481', '9897890089', '127007 Localhost', 'johndoe@gmail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '', 'iBank-CLIENT-8127'),
-(4, 'Christine Moore', '478545445812', '7785452210', '445 Bleck Street', 'christine@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', 'defaultimg.jpg', 'iBank-CLIENT-9501'),
 (5, 'Harry Den', '100014001000', '7412560000', '114 Allace Avenue', 'harryden@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '', 'iBank-CLIENT-7014'),
-(6, 'Johnnie J. Reyes', '147455554', '7412545454', '23 Hinkle Deegan Lake Road', 'reyes@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', 'user-profile-min.png', 'iBank-CLIENT-1698'),
-(8, 'Amanda Stiefel', '478000001', '7850000014', '92 Maple Street', 'amanda@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', 'user-profile-min.png', 'iBank-CLIENT-0423'),
-(9, 'Liam Moore', '170014695', '7014569696', '46 Timberbrook Lane', 'liamoore@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', 'user-profile-min.png', 'iBank-CLIENT-4716');
+(9, 'Liam Moore', '170014695', '7014569696', '46 Timberbrook Lane', 'liamoore@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', 'user-profile-min.png', 'iBank-CLIENT-4716'),
+(12, 'joseph suleeee', 'sam@synox.com', '757r874884', 'gtggggg', 'brytedree@gmail.com', '10470c3b4b1fed12c3baac014be15fac67c6e815', '', 'iBank-CLIENT-8296');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ INSERT INTO `ib_clients` (`client_id`, `name`, `national_id`, `phone`, `address`
 CREATE TABLE `ib_notifications` (
   `notification_id` int(20) NOT NULL,
   `notification_details` text NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -150,15 +151,11 @@ CREATE TABLE `ib_notifications` (
 --
 
 INSERT INTO `ib_notifications` (`notification_id`, `notification_details`, `created_at`) VALUES
-(20, 'Amanda Stiefel Has Deposited $ 2658 To Bank Account 287359614', '2023-02-16 16:17:22.592127'),
-(21, 'Liam Moore Has Deposited $ 5650 To Bank Account 719360482', '2023-02-16 16:29:14.930350'),
-(22, 'Liam Moore Has Withdrawn $ 777 From Bank Account 719360482', '2023-02-16 16:29:38.233567'),
-(23, 'Liam Moore Has Transfered $ 1256 From Bank Account 719360482 To Bank Account 287359614', '2023-02-16 16:30:15.575946'),
-(24, 'John Doe Has Deposited $ 8550 To Bank Account 724310586', '2023-02-16 16:40:49.513943'),
-(25, 'Liam Moore Has Deposited $ 600 To Bank Account 719360482', '2023-02-16 16:40:57.385035'),
-(26, 'Liam Moore Has Withdrawn $ 120 From Bank Account 719360482', '2023-02-16 16:41:14.885825'),
-(27, 'John Doe Has Transfered $ 100 From Bank Account 724310586 To Bank Account 719360482', '2023-02-16 16:41:38.821974'),
-(28, 'Harry Den Has Deposited $ 6800 To Bank Account 357146928', '2023-02-16 16:44:09.250277');
+(29, 'joseph Has Deposited $ 20,000 To Bank Account 748603512', '2024-10-28 20:51:13.835451'),
+(30, 'joseph Has Deposited $ 20,000 To Bank Account 748603512', '2024-10-28 20:58:28.898206'),
+(31, 'joseph Has Withdrawn $ 5 From Bank Account 748603512', '2024-10-28 20:58:56.007766'),
+(32, 'joseph sule Has Deposited $ 20000000 To Bank Account 067984351', '2024-10-28 23:34:03.181219'),
+(33, 'joseph sule Has Withdrawn $ 222 From Bank Account 067984351', '2024-10-28 23:43:37.852109');
 
 -- --------------------------------------------------------
 
@@ -182,7 +179,7 @@ CREATE TABLE `ib_staff` (
 --
 
 INSERT INTO `ib_staff` (`staff_id`, `name`, `staff_number`, `phone`, `email`, `password`, `sex`, `profile_pic`) VALUES
-(3, 'Staff ', 'iBank-STAFF-6785', '0704975742', 'staff@mail.com', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d', 'Male', 'user-profile-min.png');
+(4, 'Mr Samuel', 'iBank-STAFF-7340', 'godfreyj.sule1@gmail.com', 'sam@synox.com', '10470c3b4b1fed12c3baac014be15fac67c6e815', 'Male', 'avatar_image_7.webp');
 
 -- --------------------------------------------------------
 
@@ -202,7 +199,7 @@ CREATE TABLE `ib_systemsettings` (
 --
 
 INSERT INTO `ib_systemsettings` (`id`, `sys_name`, `sys_tagline`, `sys_logo`) VALUES
-(1, 'Internet Banking', 'Financial success at every service we offer.', 'ibankinglg.png');
+(1, 'Synox - Online  Banking', 'Embark on a journey towards a brighter financial future with our online banking services. From managing accounts to convenient bill payments, our platform is designed to empower.', 'ins_favicon.png');
 
 -- --------------------------------------------------------
 
@@ -226,7 +223,7 @@ CREATE TABLE `ib_transactions` (
   `transaction_amt` varchar(200) NOT NULL,
   `client_phone` varchar(200) NOT NULL,
   `receiving_acc_no` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
   `receiving_acc_name` varchar(200) NOT NULL,
   `receiving_acc_holder` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -249,7 +246,12 @@ INSERT INTO `ib_transactions` (`tr_id`, `tr_code`, `account_id`, `acc_name`, `ac
 (48, 'P5urU12mcnOBbG0NMVHX', '17', 'Liam M. Moore', '719360482', 'Savings ', '', 'Deposit', 'Success ', '9', 'Liam Moore', '170014695', '600', '7014569696', '', '2023-02-16 16:40:57.306089', '', ''),
 (49, 'kQBMaoO42sAeqZtS9lFz', '17', 'Liam M. Moore', '719360482', 'Savings ', '', 'Withdrawal', 'Success ', '9', 'Liam Moore', '170014695', '120', '7014569696', '', '2023-02-16 16:41:14.817821', '', ''),
 (50, '9jQsTd0YV6tfqCZzckGW', '18', 'Johnny M. Doen', '724310586', 'Fixed Deposit Account ', '', 'Transfer', 'Success ', '3', 'John Doe', '36756481', '100', '9897890089', '719360482', '2023-02-16 16:41:38.758246', 'Liam M. Moore', 'Liam Moore'),
-(51, 'FMyw7YGtnpQPaZXTuWmR', '14', 'Harry M Den', '357146928', 'Savings ', '', 'Deposit', 'Success ', '5', 'Harry Den', '100014001000', '6800', '7412560000', '', '2023-02-16 16:44:09.179146', '', '');
+(51, 'FMyw7YGtnpQPaZXTuWmR', '14', 'Harry M Den', '357146928', 'Savings ', '', 'Deposit', 'Success ', '5', 'Harry Den', '100014001000', '6800', '7412560000', '', '2023-02-16 16:44:09.179146', '', ''),
+(53, 'RJXP6TlsqI9UtaDb4nOQ', '19', 'joseph', '748603512', 'Select Any iBank Account types', '', 'Deposit', 'Success ', '10', 'joseph', '1238822', '20,000', '09054444075', '', '2024-10-28 20:58:28.804789', '', ''),
+(54, 'fSDgcweh9dMrOaBskN6Y', '19', 'joseph', '748603512', 'Select Any iBank Account types', '', 'Withdrawal', 'Success ', '10', 'joseph', '1238822', '5', '09054444075', '', '2024-10-28 20:58:55.903666', '', ''),
+(55, 'pNnhYRJ3i104eQgTskyG', '20', 'joseph', '067984351', 'Select Any iBank Account types', '', 'Deposit', 'Success ', '11', 'joseph sule', '1238822', '20000000', '09054444075', '', '2024-10-28 23:34:03.069391', '', ''),
+(56, 'lq2XcIMrYKu8sQOxWj0T', '20', 'joseph', '067984351', 'Select Any iBank Account types', '', 'Withdrawal', 'Success ', '11', 'joseph sule', '1238822', '222', '09054444075', '', '2024-10-28 23:43:37.739513', '', ''),
+(57, 'IoTOqrli9hfdMex6bSwP', '20', 'joseph', '067984351', 'Select Any iBank Account types', '', 'Withdrawal', 'Success ', '11', 'joseph sule', '1238822', '5000', '09054444075', '', '2024-10-29 01:10:28.964020', '', '');
 
 --
 -- Indexes for dumped tables
@@ -311,42 +313,51 @@ ALTER TABLE `ib_transactions`
 -- AUTO_INCREMENT for table `ib_acc_types`
 --
 ALTER TABLE `ib_acc_types`
-  MODIFY `acctype_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `acctype_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `ib_admin`
 --
 ALTER TABLE `ib_admin`
   MODIFY `admin_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `ib_bankaccounts`
 --
 ALTER TABLE `ib_bankaccounts`
-  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `account_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `ib_clients`
 --
 ALTER TABLE `ib_clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `ib_notifications`
 --
 ALTER TABLE `ib_notifications`
-  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `notification_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT for table `ib_staff`
 --
 ALTER TABLE `ib_staff`
-  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `ib_systemsettings`
 --
 ALTER TABLE `ib_systemsettings`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `ib_transactions`
 --
 ALTER TABLE `ib_transactions`
-  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `tr_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
